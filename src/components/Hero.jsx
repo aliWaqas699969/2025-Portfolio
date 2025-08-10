@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import BackgroundTerminal from "./BackgroundTerminal";
 
 export default function Hero() {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const lines = [
     "> Initializing MERN Stack Portfolio...",
     "> Connecting to MongoDB...",

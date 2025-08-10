@@ -5,48 +5,32 @@ import { Code, Cpu, Database, Globe } from "lucide-react";
 
 const skillsData = [
   {
-    name: "Frontend Development",
-    icon: <Globe size={28} />,
-    description: "Building modern, responsive web apps.",
-    proficiency: 90,
-    examples: ["Portfolio Website", "E-commerce Store", "Landing Page"],
-    repos: [
-      "https://github.com/yourname/portfolio",
-      "https://github.com/yourname/ecommerce",
-    ],
-  },
-  {
-    name: "Backend Development",
+    name: "Mongo DB",
     icon: <Database size={28} />,
+    description: "Building modern, NoSQL Database.",
+    proficiency: 70,
+    examples: ["Management Database", "E-commerce Store", "Chat App"],
+  },
+  {
+    name: "Express JS",
+    icon: <Globe size={28} />,
     description: "REST APIs, authentication, and databases.",
-    proficiency: 80,
+    proficiency: 70,
     examples: ["Blog API", "Auth System", "Inventory Manager"],
-    repos: [
-      "https://github.com/yourname/blog-api",
-      "https://github.com/yourname/auth-system",
-    ],
   },
   {
-    name: "IoT & Embedded Systems",
-    icon: <Cpu size={28} />,
-    description: "Arduino, ESP32, and IoT automation.",
-    proficiency: 75,
-    examples: ["Smart Home", "Weather Station", "Robot Car"],
-    repos: [
-      "https://github.com/yourname/smart-home",
-      "https://github.com/yourname/robot-car",
-    ],
-  },
-  {
-    name: "Programming & Problem Solving",
+    name: "React JS / Next JS",
     icon: <Code size={28} />,
-    description: "Data structures, algorithms, and coding challenges.",
-    proficiency: 95,
-    examples: ["LeetCode Solutions", "Sorting Algorithms", "Pathfinding"],
-    repos: [
-      "https://github.com/yourname/leetcode",
-      "https://github.com/yourname/algorithms",
-    ],
+    description: "Make beautifull modern,responsive Frontend.",
+    proficiency: 85,
+    examples: ["Portfolio", "Landing Pages", "Dashboards"],
+  },
+  {
+    name: "Node JS",
+    icon: <Cpu size={28} />,
+    description: "Server-side development, APIs, and databases.",
+    proficiency: 90,
+    examples: ["Web Servers", "Microservices", "Single-Page Applications"],
   },
 ];
 
@@ -163,23 +147,6 @@ export default function SkillsDashboard() {
                         <ul className="list-disc list-inside text-sm text-[#0D1117] dark:text-[#C9D1D9]">
                           {skill.examples.map((ex, i) => (
                             <li key={i}>{ex}</li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-[#58A6FF]">Repos:</h4>
-                        <ul className="list-disc list-inside text-sm">
-                          {skill.repos.map((repo, i) => (
-                            <li key={i}>
-                              <a
-                                href={repo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[#58A6FF] hover:underline"
-                              >
-                                {repo}
-                              </a>
-                            </li>
                           ))}
                         </ul>
                       </div>
