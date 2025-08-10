@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@import "tailwindcss";
+/* Custom Theme for Portfolio */
+@theme {
+  --color-primary: #0d1117; /*Dark Navy*/
+  --color-secondary: #161b22; /* Darker Section */
+  --color-accent: #58a6ff; /* Bright Blue */
+  --color-coral: #ff7b72; /* Accent Coral */
+  --color-textLight: #c9d1d9; /* Light Text */
+
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-code: "Fira Code", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.terminal-wrap {
+  position: relative;
+  z-index: 10;
+}
+
+/* the glowing element sits behind the terminal box */
+.terminal-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: block;
+  transform: translateY(18%) scale(1);
+  filter: blur(40px);
+  opacity: 0.9;
+  z-index: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  /* gradient uses your theme color vars */
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(88, 166, 255, 0.18) 0%,
+      rgba(255, 123, 114, 0.08) 25%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(88, 166, 255, 0.14) 0%,
+      transparent 35%
+    );
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+  animation: glowPulse 3.6s ease-in-out infinite;
+}
+
+/* subtle breathing animation */
+@keyframes glowPulse {
+  0% {
+    transform: translateY(18%) scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(15%) scale(1.06);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(18%) scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+/* make glow respond to hover on the terminal container */
+.terminal-wrap:hover + .terminal-glow,
+.terminal-wrap:hover .terminal-glow {
+  transform: translateY(10%) scale(1.12);
+  opacity: 1;
+}
+
+/* small glass effect on the terminal box */
+.terminal-box {
+  backdrop-filter: blur(2px) saturate(120%);
+}
+
+@keyframes neonGlow {
+  0% {
+    box-shadow: 0 0 8px #58a6ff, 0 0 15px #58a6ff, 0 0 25px #58a6ff;
+  }
+  50% {
+    box-shadow: 0 0 12px #58a6ff, 0 0 20px #58a6ff, 0 0 35px #58a6ff;
+  }
+  100% {
+    box-shadow: 0 0 8px #58a6ff, 0 0 15px #58a6ff, 0 0 25px #58a6ff;
+  }
+}
+
+.animate-neonGlow {
+  animation: neonGlow 1.5s infinite alternate;
+}
+
+.neon-text {
+  text-shadow: 0 0 5px #58a6ff, 0 0 10px #58a6ff, 0 0 20px #58a6ff;
+}
+.neon-glow {
+  box-shadow: 0 0 10px #58a6ff, 0 0 20px #58a6ff;
+}
