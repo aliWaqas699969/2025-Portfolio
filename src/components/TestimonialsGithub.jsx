@@ -4,32 +4,32 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "Product Manager at InnovateX",
+    name: "Hassan_687",
+    role: "Product Manager at YBTech",
     quote:
       "An absolute pleasure to work with — delivers on time and beyond expectations.",
-    image: "/gig2.png",
-  },
-  {
-    name: "Michael Lee",
-    role: "CTO at DevHub",
-    quote:
-      "Clean, efficient code and a strong eye for UI/UX. Highly recommended!",
     image: "/gig1.png",
   },
   {
-    name: "Emily Carter",
-    role: "Founder at StartUp Co.",
+    name: "Steve",
+    role: "Freelancer at Fiver",
+    quote:
+      "Clean, efficient code and a strong eye for responsiveness. Highly recommended!",
+    image: "/project4.png",
+  },
+  {
+    name: "Samu_hamil",
+    role: "Freelance.",
     quote:
       "A rare blend of technical skill and creative vision. Incredible results every time.",
-    image: "/gig3.png",
+    image: "/project5.png",
   },
 ];
 
 const githubStats = {
-  followers: 150,
-  repos: 42,
-  contributions: 1250,
+  followers: 4,
+  repos: 10,
+  contributions: 200,
 };
 
 export default function TestimonialsGithub() {

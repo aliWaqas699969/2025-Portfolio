@@ -79,7 +79,7 @@ export default function Hero() {
         transition={{ duration: 0.9 }}
         className="flex flex-col max-w-xl text-center md:text-left z-10"
       >
-        <h1 className="text-4xl md:text-6xl font-heading font-bold leading-tight">
+        <h1 className="text-4xl text-white md:text-6xl font-heading font-bold leading-tight">
           Hi, I’m {""}
           <span className="bg-gradient-to-r from-blue-500 to-[#FF7B72] bg-clip-text text-transparent">
             Ali Waqas

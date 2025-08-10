@@ -9,14 +9,14 @@ const caseStudies = [
     solution:
       "Implemented caching, reduced DB queries, and optimized payload size.",
     result: "Response time improved by 65%, increasing user satisfaction.",
-    images: ["/gig1.png", "/gig2.png", "/gig3.png"],
+    images: ["/gig1.png", "/gig2.png"],
   },
   {
     title: "Revamping E-commerce UX",
-    problem: "Users struggled with navigation, leading to high bounce rates.",
-    solution: "Redesigned UI/UX, added predictive search and category filters.",
-    result: "Bounce rate dropped by 35% and conversions increased by 20%.",
-    images: ["/gig1.png", "/gig3.png"],
+    problem: "Users struggled with navigation, and not mobile Friendly.",
+    solution: "Update Frontend, added responsive and mobile friendly UI.",
+    result: "Increased user engagement and conversions.",
+    images: ["/project5.png", "/project6.png"],
   },
 ];
 
@@ -66,7 +66,7 @@ function CaseStudy({ study, index }) {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          {String(index + 1).padStart(2, "0")} — {study.title}
+          {String(index + 1).padStart(2, "0")} {study.title}
         </motion.h3>
         <p className="mb-2">
           <strong>Problem:</strong> {study.problem}

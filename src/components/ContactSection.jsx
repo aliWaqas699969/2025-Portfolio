@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 //eslint-disable-next-line
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import emailjs from "@emailjs/browser"; // ✅ Import EmailJS
+import toast from "react-hot-toast";
 
 export default function ContactSection() {
+  const formRef = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,8 +20,28 @@ export default function ContactSection() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Message sent! (Currently placeholder)");
-    setFormData({ name: "", email: "", message: "" });
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        "service_jjtzd8q", // <-- replace
+        "template_zpuhicv", // <-- replace
+        formRef.current,
+        "Jl674Sa6A6mLLSW83" // <-- replace
+      )
+      .then(
+        (result) => {
+          console.log("Email sent:", result.text);
+          toast.success("Message sent successfully!");
+          setFormData({ name: "", email: "", message: "" });
+          setLoading(false);
+        },
+        (error) => {
+          console.error("Email send error:", error.text);
+          toast.error("Failed to send message. Please try again.");
+          setLoading(false);
+        }
+      );
   };
 
   return (
@@ -30,6 +54,7 @@ export default function ContactSection() {
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
         {/* Contact Form */}
         <motion.form
+          ref={formRef}
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -40,7 +65,7 @@ export default function ContactSection() {
             <label className="block mb-2">Name</label>
             <input
               type="text"
-              name="name"
+              name="name" // ✅ matches template variable
               value={formData.name}
               onChange={handleChange}
               className="w-full p-2 rounded bg-[#0D1117] border border-[#58A6FF] focus:outline-none focus:ring-2 focus:ring-[#58A6FF]"
@@ -52,7 +77,7 @@ export default function ContactSection() {
             <label className="block mb-2">Email</label>
             <input
               type="email"
-              name="email"
+              name="email" // ✅ matches template variable
               value={formData.email}
               onChange={handleChange}
               className="w-full p-2 rounded bg-[#0D1117] border border-[#58A6FF] focus:outline-none focus:ring-2 focus:ring-[#58A6FF]"
@@ -63,7 +88,7 @@ export default function ContactSection() {
           <div className="mb-4">
             <label className="block mb-2">Message</label>
             <textarea
-              name="message"
+              name="message" // ✅ matches template variable
               value={formData.message}
               onChange={handleChange}
               rows="5"
@@ -76,9 +101,14 @@ export default function ContactSection() {
             whileHover={{ scale: 1.05, boxShadow: "0 0 20px #FF7B72" }}
             transition={{ duration: 0.3 }}
             type="submit"
-            className="w-full py-2 rounded bg-[#FF7B72] text-[#0D1117] font-bold neon-btn"
+            disabled={loading}
+            className={`w-full py-2 rounded font-bold neon-btn cursor-pointer ${
+              loading
+                ? "bg-gray-500 cursor-not-allowed text-white"
+                : "bg-[#FF7B72] text-[#0D1117]"
+            }`}
           >
-            Send Message
+            {loading ? "Sending..." : "Send Message"}
           </motion.button>
         </motion.form>
 
@@ -114,7 +144,7 @@ export default function ContactSection() {
               <FaTwitter />
             </a>
             <a
-              href="mailto:youremail@example.com"
+              href="mailto:youremail@gmail.com"
               className="text-[#58A6FF] text-2xl hover:text-[#FF7B72]"
             >
               <FaEnvelope />
@@ -123,10 +153,10 @@ export default function ContactSection() {
 
           <div>
             <p>
-              <strong>Email:</strong> youremail@example.com
+              <strong>Email:</strong> aliwaqas55488@gmail.com
             </p>
             <p>
-              <strong>Location:</strong> Your City, Country
+              <strong>Location:</strong> Islamabad, Pakistan
             </p>
           </div>
         </motion.div>

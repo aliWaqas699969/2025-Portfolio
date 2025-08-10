@@ -5,29 +5,29 @@ import { Briefcase, GraduationCap, Rocket } from "lucide-react";
 
 const experiences = [
   {
-    year: "2025",
-    title: "Lead Developer at TechCorp",
+    year: "2024-2025",
+    title: "MERN Stack Developer at YBTech",
     description:
-      "Led a team of 8 engineers to deliver high-scale web platforms.",
-    extraDetails: "Worked on React, Next.js, Node.js, and cloud architecture.",
+      "Worked on complex projects using React, Next.js, Node.js, and MongoDB.",
+    extraDetails: "Worked on React, Next.js, Node.js, and Databases.",
     icon: <Briefcase className="text-[#58A6FF]" />,
     image: "/gig1.png",
   },
   {
-    year: "2023",
-    title: "Graduated with CS Degree",
-    description: "Completed B.Sc. in Computer Science with honors.",
-    extraDetails: "Specialized in software architecture and AI.",
-    icon: <GraduationCap className="text-[#FF7B72]" />,
-    image: "/gig2.png",
+    year: "2023-2024",
+    title: "Junior Frontend Developer at PK2100 Business Solutions",
+    description: "Worked on complex projects using React, Next.js.",
+    extraDetails: "Specialized in Frontend Development and UI/UX.",
+    icon: <Rocket className="text-[#FF7B72]" />,
+    image: "/project4.png",
   },
   {
-    year: "2021",
-    title: "First Major Project Launch",
-    description: "Developed and deployed a SaaS platform used by 5k+ users.",
-    extraDetails: "Built with MERN stack and integrated payment systems.",
-    icon: <Rocket className="text-[#58A6FF]" />,
-    image: "/gig3.png",
+    year: "2022",
+    title: "Graduated with Software Engineer Degree",
+    description: "Completed B.Sc. in Software engineering with honors.",
+    extraDetails: "Little Bit experience of web development.",
+    icon: <GraduationCap className="text-[#58A6FF]" />,
+    image: "/Degree.jpg",
   },
 ];
 

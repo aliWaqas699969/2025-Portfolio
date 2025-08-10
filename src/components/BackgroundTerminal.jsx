@@ -6,6 +6,7 @@ export default function BackgroundTerminal() {
     "C:\\> CONNECTING TO SERVER...",
     "C:\\> ACCESS GRANTED",
     "RUNNING NMAP SCAN...",
+    "ERROR: NO RESPONSE FROM SERVER",
     "SCANNING PORTS 22, 80, 443...",
     "PORTS OPEN: 80, 443",
     "DOWNLOADING DATABASE...",
