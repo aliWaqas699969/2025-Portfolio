@@ -3,7 +3,7 @@ import ContactSection from "./components/ContactSection";
 import ExperienceTimeline from "./components/ExperienceTimeline";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Hero from "./components/hero";
+import Hero from "./components/Hero";
 import ProjectPlayground from "./components/ProjectPlayground";
 import SkillsDashboard from "./components/SkillsDashboard";
 import TestimonialsGithub from "./components/TestimonialsGithub";
