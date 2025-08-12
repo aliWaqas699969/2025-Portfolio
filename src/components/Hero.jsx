@@ -69,7 +69,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative bg-primary  min-h-screen flex flex-col md:flex-row  items-center justify-between px-6 md:px-20 gap-12  overflow-hidden"
+      className="relative bg-primary  min-h-screen flex flex-col md:flex-row  items-center justify-between px-6 py-24 md:px-20 gap-12 overflow-hidden "
     >
       <BackgroundTerminal />
       {/* Left Content */}
@@ -77,7 +77,7 @@ export default function Hero() {
         initial={{ opacity: 0, x: -60 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.9 }}
-        className="flex flex-col max-w-xl text-center md:text-left z-10"
+        className="flex flex-col max-w-xl text-center md:text-left z-10 "
       >
         <h1 className="text-4xl text-white md:text-6xl font-heading font-bold leading-tight">
           Hi, I’m {""}
