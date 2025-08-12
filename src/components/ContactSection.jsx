@@ -126,7 +126,7 @@ export default function ContactSection() {
 
           <div className="flex space-x-4 mb-6">
             <a
-              href="#"
+              href="https://github.com/aliWaqas699969?tab=overview&from=2023-12-01&to=2023-12-31"
               className="text-[#58A6FF] text-2xl hover:text-[#FF7B72]"
             >
               <FaGithub />
@@ -144,7 +144,7 @@ export default function ContactSection() {
               <FaTwitter />
             </a>
             <a
-              href="mailto:youremail@gmail.com"
+              href="mailto:aliwaqas55488@gmail.com"
               className="text-[#58A6FF] text-2xl hover:text-[#FF7B72]"
             >
               <FaEnvelope />

@@ -7,7 +7,7 @@ const caseStudies = [
     title: "Optimizing API Performance",
     problem: "The API response times were too slow, causing poor UX.",
     solution:
-      "Implemented caching, reduced DB queries, and optimized payload size.",
+      "Improving API response times, optimizing database adding loading state or error handling.",
     result: "Response time improved by 65%, increasing user satisfaction.",
     images: ["/gig1.png", "/gig2.png"],
   },

@@ -13,7 +13,7 @@ export default function Footer() {
       >
         {/* Left */}
         <p className="text-sm">
-          © {new Date().getFullYear()} Your Name. All rights reserved.
+          © {new Date().getFullYear()} Ali waqas. All rights reserved.
         </p>
 
         {/* Right */}
