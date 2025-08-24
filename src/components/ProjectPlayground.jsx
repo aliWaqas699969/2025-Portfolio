@@ -51,6 +51,15 @@ const projects = [
     code: "https://github.com/aliWaqas699969/ThinkBoard-Mern",
     tech: ["React.js", "Node.js", "MongoDB", "DaisyUI"],
   },
+  {
+    title: "Database Schema Converter",
+    description:
+      " A modern responsive application where you convert between different database schema like MySQL to MongoDB.",
+    image: "/landing.png",
+    live: "https://db-eight-ebon.vercel.app/",
+    code: "https://github.com/aliWaqas699969/DBSchema",
+    tech: ["React.js", "Node.js", "MongoDB", "fontawesome", "Gemini AI"],
+  },
 ];
 
 export default function ProjectPlayground() {
