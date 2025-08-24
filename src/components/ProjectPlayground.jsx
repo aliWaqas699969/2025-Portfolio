@@ -110,7 +110,7 @@ export default function ProjectPlayground() {
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full object-cover"
+                className="w-full h-80 object-cover hover:scale-105 transition-transform duration-300"
               />
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
