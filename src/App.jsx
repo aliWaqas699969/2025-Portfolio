@@ -7,9 +7,12 @@ import Hero from "./components/Hero";
 import ProjectPlayground from "./components/ProjectPlayground";
 import SkillsDashboard from "./components/SkillsDashboard";
 import TestimonialsGithub from "./components/TestimonialsGithub";
+import { Analytics } from "@vercel/analytics/react"
+
 export default function App() {
   return (
     <>
+    <Analytics />
       <Header />
       <Hero />
       <SkillsDashboard />
