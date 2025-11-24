@@ -1,96 +1,36 @@
 //eslint-disable-next-line
 import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-import BackgroundTerminal from "./BackgroundTerminal";
+import ChatInterface from "./ChatInterface";
 
 export default function Hero() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const lines = [
-    "> Initializing MERN Stack Portfolio...",
-    "> Connecting to MongoDB...",
-    "> Backend server running on port 5000",
-    "> Frontend server running on port 5173",
-    "> Deploying to production...",
-    "> Build completed successfully 🎉",
-  ];
 
   const [displayedText, setDisplayedText] = useState("");
   const [lineIndex, setLineIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const termRef = useRef(null);
 
-  useEffect(() => {
-    if (lineIndex < lines.length) {
-      if (charIndex < lines[lineIndex].length) {
-        const timeout = setTimeout(() => {
-          setDisplayedText((prev) => prev + lines[lineIndex][charIndex]);
-          setCharIndex((c) => c + 1);
-        }, 35); // slightly faster typing
-        return () => clearTimeout(timeout);
-      } else {
-        const timeout = setTimeout(() => {
-          setDisplayedText((prev) => prev + "\n");
-          setLineIndex((li) => li + 1);
-          setCharIndex(0);
-        }, 420);
-        return () => clearTimeout(timeout);
-      }
-    } else {
-      // loop after a pause
-      const loopTimeout = setTimeout(() => {
-        setDisplayedText("");
-        setLineIndex(0);
-        setCharIndex(0);
-      }, 4000);
-      return () => clearTimeout(loopTimeout);
-    }
-  }, [charIndex, lineIndex, lines]);
-
-  // Optional: small parallax on mouse move for glow (nice touch)
-  useEffect(() => {
-    const el = termRef.current;
-    if (!el) return;
-    const onMove = (e) => {
-      const rect = el.getBoundingClientRect();
-      const dx = (e.clientX - (rect.left + rect.width / 2)) / rect.width;
-      const dy = (e.clientY - (rect.top + rect.height / 2)) / rect.height;
-      // move glow slightly
-      const glow = el.querySelector(".terminal-glow");
-      if (glow) {
-        glow.style.transform = `translateY(${12 + dy * 6}%) scale(${
-          1.02 + Math.abs(dx) * 0.06
-        })`;
-      }
-    };
-    window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
-  }, []);
-
   return (
     <section
       id="home"
-      className="relative bg-primary  min-h-screen flex flex-col md:flex-row  items-center justify-between px-6 py-24 md:px-20 gap-12 overflow-hidden "
+      className="relative  bg-primary min-h-screen mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center px-6 py-24 md:px-20 gap-12 overflow-hidden "
     >
-      <BackgroundTerminal />
-      {/* Left Content */}
       <motion.div
-        initial={{ opacity: 0, x: -60 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.9 }}
-        className="flex flex-col max-w-xl text-center md:text-left z-10 "
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <h1 className="text-4xl text-white md:text-6xl font-heading font-bold leading-tight">
-          Hi, I’m {""}
-          <span className="bg-gradient-to-r from-blue-500 to-[#FF7B72] bg-clip-text text-transparent">
-            Ali Waqas
-          </span>
+        <div className="inline-block px-3 py-1 mb-6 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider">
+          Available for work
+        </div>
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-br from-white via-zinc-200 to-zinc-600 bg-clip-text text-transparent">
+          Don't read my resume. <br />
+          <span className="text-white">Chat with it.</span>
         </h1>
-        <h2 className="text-xl md:text-2xl text-coral font-semibold">
-          MERN Stack Developer
-        </h2>
-        <p className="text-lg text-gray-400 max-w-xl">
-          Building modern, responsive, and scalable web applications with
-          MongoDB, Express, React, and Node.js.
+        <p className="text-lg text-zinc-400 leading-relaxed mb-8 max-w-lg">
+          I'm Ali, a Full Stack Engineer building scalable applications with
+          React.js, Next.js and AI. This is my digital twin ask it anything.
         </p>
 
         <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-4">
@@ -101,41 +41,25 @@ export default function Hero() {
           >
             🚀 View My Work
           </a>
-
-          <a
-            href="#contact"
+          <button
+            onClick={() => setIsCmdOpen(true)}
             className="px-6 py-3 rounded-lg font-semibold transition-all duration-300
-                       border border-accent text-accent hover:bg-accent hover:text-primary hover:shadow-[0_0_20px_#58A6FF] hover:scale-105"
+                       border border-accent text-accent hover:bg-accent hover:text-primary hover:shadow-[0_0_20px_#58A6FF] hover:scale-105 cursor-pointer"
           >
-            📡 Contact Me
-          </a>
+            📡 Press Cmd+K
+          </button>
         </div>
       </motion.div>
 
-      {/* Right: Terminal + glow */}
-      <div
-        ref={termRef}
-        className="relative w-full md:w-[540px] h-[320px] flex items-center justify-center z-10"
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="relative"
       >
-        {/* glow element (positioned behind the terminal box) */}
-        <span className="terminal-glow" aria-hidden="true"></span>
-
-        {/* the terminal itself */}
-        <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, delay: 0.25 }}
-          className="terminal-wrap relative bg-black/85 text-green-400 font-mono p-5 rounded-xl shadow-2xl w-[92%] max-w-[540px] h-[86%] overflow-hidden border border-green-600 terminal-box"
-        >
-          <pre className="whitespace-pre-wrap text-sm md:text-base leading-relaxed select-none">
-            {displayedText}
-          </pre>
-          {/* blinking cursor */}
-          <span className="absolute bottom-4 right-6 text-green-300 animate-pulse">
-            ▌
-          </span>
-        </motion.div>
-      </div>
+        <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-20" />
+        <ChatInterface />
+      </motion.div>
     </section>
   );
 }
