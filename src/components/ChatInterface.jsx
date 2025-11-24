@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Send, Bot, User, Sparkles, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
-import { sendMessageToGemini } from "../services/geminiService";
+import { sendMessageToGemini } from "../services/geminiService.jsx";
 
 export const ChatInterface = () => {
   const [messages, setMessages] = useState([
