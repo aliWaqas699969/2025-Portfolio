@@ -3,7 +3,6 @@ import { RESUME } from "../Constant";
 
 let aiClient = null;
 
-// Initialize the client only when needed
 const getAiClient = () => {
   if (!aiClient) {
     const key = import.meta.env.VITE_GEMINI_API_KEY;
