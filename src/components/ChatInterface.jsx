@@ -137,7 +137,7 @@ export const ChatInterface = () => {
       {/* Input Area */}
       <div className="p-4 bg-zinc-900/50 border-t border-white/5">
         {messages.length < 3 && !isTyping && (
-          <div className="flex gap-2 overflow-hidden pb-3 mb-2">
+          <div className="flex gap-2 overflow-x-auto pb-3 mb-2">
             {suggestions.map((s) => (
               <button
                 key={s}
