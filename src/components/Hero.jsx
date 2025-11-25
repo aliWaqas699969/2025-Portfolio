@@ -58,7 +58,7 @@ export default function Hero() {
         transition={{ delay: 0.2, duration: 0.5 }}
         className="relative"
       >
-        <div className="absolute -inset-1 rounded-2xl blur opacity-20 bg-gradient-to-r from-[#58A6FF] to-[#58A6FF]" />
+        <div className="absolute rounded-2xl blur opacity-20 bg-gradient-to-r from-[#58A6FF] to-[#58A6FF]" />
         <ChatInterface />
       </motion.div>
       <CommandPalette

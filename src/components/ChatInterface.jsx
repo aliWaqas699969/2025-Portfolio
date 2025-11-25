@@ -63,9 +63,9 @@ export const ChatInterface = () => {
   };
 
   const suggestions = [
-    "Does Ali know Next.js?",
-    "Tell me about his biggest project.",
-    "Why should I hire him?",
+    "Does you know Next.js?",
+    "Tell me about your biggest project.",
+    "Why should I hire you?",
   ];
 
   return (
