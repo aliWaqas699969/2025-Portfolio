@@ -16,10 +16,18 @@ export const ChatInterface = () => {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
 
-  const messagesEndRef = useRef(null);
+  const scrollContainerRef = useRef(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (scrollContainerRef.current) {
+      const { scrollHeight, clientHeight } = scrollContainerRef.current;
+      const maxScrollTop = scrollHeight - clientHeight;
+
+      scrollContainerRef.current.scrollTo({
+        top: maxScrollTop > 0 ? maxScrollTop : 0,
+        behavior: "smooth",
+      });
+    }
   };
 
   useEffect(() => {
@@ -62,7 +70,7 @@ export const ChatInterface = () => {
   ];
 
   return (
-    <div className="w-full max-w-2xl mx-auto h-[550px] flex flex-col glass-panel rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/10">
+    <div className="w-full max-w-4xl mx-auto h-[550px] flex flex-col glass-panel rounded-2xl">
       {/* Header */}
       <div className="p-4 border-b border-white/5 bg-zinc-900/50 flex items-center gap-3">
         <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
@@ -72,8 +80,10 @@ export const ChatInterface = () => {
         </span>
       </div>
 
-      {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div
+        ref={scrollContainerRef}
+        className="flex-1 p-4 space-y-4 overflow-y-auto"
+      >
         {messages.map((msg) => (
           <motion.div
             key={msg.id}
@@ -123,8 +133,6 @@ export const ChatInterface = () => {
             </div>
           </motion.div>
         )}
-
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Input Area */}
@@ -153,7 +161,7 @@ export const ChatInterface = () => {
           />
           <button
             type="submit"
-            disabled={!input.trim() || isTyping}
+            disabled={!input}
             className="absolute right-2 top-2 p-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             <Send className="w-4 h-4" />

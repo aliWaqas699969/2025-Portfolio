@@ -14,7 +14,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative  bg-primary min-h-screen mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center px-6 py-24 md:px-20 gap-12 overflow-hidden "
+      className="relative bg-primary min-h-screen mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center px-6 py-24 md:px-20"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -57,7 +57,7 @@ export default function Hero() {
         transition={{ delay: 0.2, duration: 0.5 }}
         className="relative"
       >
-        <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-20" />
+        <div className="absolute -inset-1 rounded-2xl blur opacity-20 bg-gradient-to-r from-[#58A6FF] to-[#58A6FF]" />
         <ChatInterface />
       </motion.div>
     </section>
