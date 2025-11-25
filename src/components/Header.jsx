@@ -1,15 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 //eslint-disable-next-line
-import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Menu, X } from "lucide-react";
-import {
-  Command,
-  Github,
-  Linkedin,
-  Mail,
-  Twitter,
-  ChevronDown,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { Command } from "lucide-react";
 import { CommandPalette } from "./CommandPalette";
 export default function Header() {
   const [isCmdOpen, setIsCmdOpen] = useState(false);
