@@ -47,7 +47,7 @@ function CaseStudy({ study, index }) {
   return (
     <div
       id="case-studies"
-      className={`flex flex-col ${
+      className={`max-w-12xl px-20 flex flex-col ${
         isEven ? "md:flex-row" : "md:flex-row-reverse"
       } items-center gap-8`}
     >
