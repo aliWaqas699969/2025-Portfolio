@@ -67,7 +67,10 @@ export default function TestimonialsGithub() {
   }, []);
 
   return (
-    <section className="bg-[#0D1117] text-[#C9D1D9] py-16 px-4 sm:px-8">
+    <section
+      id="stats"
+      className="bg-[#0D1117] text-[#C9D1D9] py-16 px-4 sm:px-8"
+    >
       <h2 className="text-4xl font-bold mb-12 text-center">
         Testimonials & GitHub Stats
       </h2>

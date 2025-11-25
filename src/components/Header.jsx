@@ -2,40 +2,24 @@ import { useState, useEffect } from "react";
 //eslint-disable-next-line
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Menu, X } from "lucide-react";
-
+import {
+  Command,
+  Github,
+  Linkedin,
+  Mail,
+  Twitter,
+  ChevronDown,
+} from "lucide-react";
+import { CommandPalette } from "./CommandPalette";
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [isCmdOpen, setIsCmdOpen] = useState(false);
 
-  const navLinks = [
-    { name: "Home", id: "home" },
-    { name: "Skills", id: "skills" },
-    { name: "Projects", id: "projects" },
-    { name: "Case Studies", id: "case-studies" },
-    { name: "Timeline", id: "timeline" },
-    { name: "Contact", id: "contact" },
-  ];
-
-  // Detect active section using Intersection Observer
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.6 }
-    );
-
-    navLinks.forEach((link) => {
-      const section = document.getElementById(link.id);
-      if (section) observer.observe(section);
-    });
-
-    return () => observer.disconnect();
-  }, [navLinks]);
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#0D1117]/80 dark:bg-[#0D1117]/80 backdrop-blur-lg shadow-md">
@@ -54,69 +38,28 @@ export default function Header() {
             />
           </a>
         </motion.div>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <motion.a
-              key={link.id}
-              href={`#${link.id}`}
-              className={`transition-colors relative ${
-                activeSection === link.id
-                  ? "text-[#58A6FF] font-semibold"
-                  : "text-[#C9D1D9] hover:text-[#58A6FF]"
-              }`}
-              whileHover={{ scale: 1.1 }}
-            >
-              {link.name}
-              {activeSection === link.id && (
-                <motion.div
-                  layoutId="activeIndicator"
-                  className="absolute -bottom-1 left-0 w-full h-[2px] bg-[#58A6FF] rounded shadow-[0_0_8px_#58A6FF,0_0_15px_#58A6FF,0_0_25px_#58A6FF] animate-neonGlow"
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                />
-              )}
-            </motion.a>
-          ))}
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <motion.button
-          className="md:hidden p-2 rounded-lg bg-[#161B22] hover:bg-[#1F2937] transition-colors"
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setMenuOpen(!menuOpen)}
+        <button
+          onClick={() => setIsCmdOpen(true)}
+          className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-sm text-zinc-400 hover:text-white hover:border-zinc-700 transition-all group"
         >
-          {menuOpen ? <X size={20} /> : <Menu size={20} />}
-        </motion.button>
-      </div>
+          <span>Search...</span>
+          <kbd className="hidden sm:inline-flex h-5 items-center gap-1 rounded border border-zinc-700 bg-zinc-800 px-1.5 font-mono text-[10px] font-medium text-zinc-400 group-hover:text-white">
+            <span className="text-xs">⌘</span>K
+          </kbd>
+        </button>
 
-      {/* Mobile Nav */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.nav
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#0D1117] dark:bg-[#0D1117] px-6 pb-4 space-y-4"
-          >
-            {navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                className={`block transition-colors ${
-                  activeSection === link.id
-                    ? "text-[#58A6FF] font-semibold"
-                    : "text-[#C9D1D9] hover:text-[#58A6FF]"
-                }`}
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-          </motion.nav>
-        )}
-      </AnimatePresence>
+        <button
+          onClick={() => setIsCmdOpen(true)}
+          className="md:hidden p-2 text-zinc-400 hover:text-white"
+        >
+          <Command className="w-5 h-5" />
+        </button>
+      </div>
+      <CommandPalette
+        isOpen={isCmdOpen}
+        setIsOpen={setIsCmdOpen}
+        onNavigate={scrollToSection}
+      />
     </header>
   );
 }

@@ -2,15 +2,16 @@
 import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import ChatInterface from "./ChatInterface";
+import { CommandPalette } from "./CommandPalette";
 
 export default function Hero() {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-
-  const [displayedText, setDisplayedText] = useState("");
-  const [lineIndex, setLineIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const termRef = useRef(null);
-
+  const [isCmdOpen, setIsCmdOpen] = useState(false);
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section
       id="home"
@@ -60,6 +61,11 @@ export default function Hero() {
         <div className="absolute -inset-1 rounded-2xl blur opacity-20 bg-gradient-to-r from-[#58A6FF] to-[#58A6FF]" />
         <ChatInterface />
       </motion.div>
+      <CommandPalette
+        isOpen={isCmdOpen}
+        setIsOpen={setIsCmdOpen}
+        onNavigate={scrollToSection}
+      />
     </section>
   );
 }

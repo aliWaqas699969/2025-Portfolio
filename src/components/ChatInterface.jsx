@@ -8,7 +8,7 @@ export const ChatInterface = () => {
     {
       id: "welcome",
       role: "model",
-      text: "Hi! I'm Ali's Digital Twin. I can answer questions about his experience, stack, and projects. What would you like to know?",
+      text: "Hi! I'm Ali Digital Twin. I can answer questions about his experience, stack, and projects. What would you like to know?",
       timestamp: Date.now(),
     },
   ]);
@@ -156,7 +156,7 @@ export const ChatInterface = () => {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask anything about my skills..."
+            placeholder="Ask anything about my skills, experience, and projects..."
             className="flex-1 bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 transition-all text-white placeholder-zinc-600"
           />
           <button
